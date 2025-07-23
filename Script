@@ -1,0 +1,88 @@
+loadstring([[
+local correctKey = "68170246I$6528"
+local keyLink = "https://lootdest.org/s?1X8toeUa"
+local postKeyScript = 'loadstring(game:HttpGet("https://pastefy.app/v0No8iDC/raw"))()'
+
+local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
+ScreenGui.Name = "Aethra_KeySystem"
+
+local MainFrame = Instance.new("Frame", ScreenGui)
+MainFrame.Size = UDim2.new(0, 400, 0, 220)
+MainFrame.Position = UDim2.new(0.5, -200, 0.5, -110)
+MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
+MainFrame.BorderSizePixel = 0
+local UICorner = Instance.new("UICorner", MainFrame)
+UICorner.CornerRadius = UDim.new(0, 12)
+
+local Title = Instance.new("TextLabel", MainFrame)
+Title.Size = UDim2.new(1, 0, 0, 40)
+Title.Position = UDim2.new(0, 0, 0, 0)
+Title.BackgroundTransparency = 1
+Title.Text = "🔑 Enter Access Key"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextScaled = true
+Title.Font = Enum.Font.GothamBold
+
+local KeyBox = Instance.new("TextBox", MainFrame)
+KeyBox.Size = UDim2.new(0.8, 0, 0, 40)
+KeyBox.Position = UDim2.new(0.1, 0, 0.25, 0)
+KeyBox.PlaceholderText = "Paste your key here..."
+KeyBox.Text = ""
+KeyBox.TextScaled = true
+KeyBox.Font = Enum.Font.Gotham
+KeyBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+KeyBox.BackgroundColor3 = Color3.fromRGB(45, 45, 55)
+local KeyBoxCorner = Instance.new("UICorner", KeyBox)
+KeyBoxCorner.CornerRadius = UDim.new(0, 8)
+
+local CopyButton = Instance.new("TextButton", MainFrame)
+CopyButton.Size = UDim2.new(0.8, 0, 0, 35)
+CopyButton.Position = UDim2.new(0.1, 0, 0.5, 0)
+CopyButton.Text = "📋 Copy Link to Get Key"
+CopyButton.TextScaled = true
+CopyButton.Font = Enum.Font.GothamSemibold
+CopyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CopyButton.BackgroundColor3 = Color3.fromRGB(60, 60, 70)
+local CopyCorner = Instance.new("UICorner", CopyButton)
+CopyCorner.CornerRadius = UDim.new(0, 8)
+
+local SubmitButton = Instance.new("TextButton", MainFrame)
+SubmitButton.Size = UDim2.new(0.8, 0, 0, 35)
+SubmitButton.Position = UDim2.new(0.1, 0, 0.7, 0)
+SubmitButton.Text = "✅ Submit"
+SubmitButton.TextScaled = true
+SubmitButton.Font = Enum.Font.GothamBold
+SubmitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+SubmitButton.BackgroundColor3 = Color3.fromRGB(0, 170, 90)
+local SubmitCorner = Instance.new("UICorner", SubmitButton)
+SubmitCorner.CornerRadius = UDim.new(0, 8)
+
+local Status = Instance.new("TextLabel", MainFrame)
+Status.Size = UDim2.new(1, -20, 0, 25)
+Status.Position = UDim2.new(0, 10, 0.9, 0)
+Status.BackgroundTransparency = 1
+Status.Text = ""
+Status.TextScaled = true
+Status.Font = Enum.Font.Gotham
+Status.TextColor3 = Color3.fromRGB(255, 255, 255)
+Status.TextWrapped = true
+
+CopyButton.MouseButton1Click:Connect(function()
+    setclipboard(keyLink)
+    Status.Text = "🔗 Key link copied to clipboard."
+    Status.TextColor3 = Color3.fromRGB(100, 200, 255)
+end)
+
+SubmitButton.MouseButton1Click:Connect(function()
+    if KeyBox.Text == correctKey then
+        Status.Text = "✅ Key accepted. Loading script..."
+        Status.TextColor3 = Color3.fromRGB(0, 255, 100)
+        wait(1)
+        loadstring(game:HttpGet("https://pastefy.app/v0No8iDC/raw"))()
+        ScreenGui:Destroy()
+    else
+        Status.Text = "❌ Incorrect key. Try again."
+        Status.TextColor3 = Color3.fromRGB(255, 100, 100)
+    end
+end)
+]])()
